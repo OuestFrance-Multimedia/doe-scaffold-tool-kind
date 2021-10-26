@@ -28,13 +28,13 @@ make create-symbolic-links
 ## Create Cluster
 Use following command in order to create cluster.
 ```shell
-create-cluster
+make create-cluster
 ```
 
 ## Destroy Cluster
 Use following command in order to destroy cluster.
 ```shell
-destroy-cluster
+make destroy-cluster
 ```
 
 ## Prepare your App 
@@ -51,6 +51,8 @@ git submodule add --branch unrestricted git@${HOST}:${GROUP}/${PATH}/${TEAM}/pla
 
 ### Create env file
 Use following command in order to create your App env's file.
+
+Example:
 ```shell
 cat << EOF > app1.env
 APP=app1
