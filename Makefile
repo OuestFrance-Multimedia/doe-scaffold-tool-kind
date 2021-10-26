@@ -31,7 +31,11 @@ create-symbolic-links:
 
 create-cluster: ## create
 create-cluster:
-	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile create
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile create-docker-network
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile create-kind
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-metrics-server
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-metallb
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-nginx-ingress-controller
 
 destroy-cluster: ## destroy
 destroy-cluster:
