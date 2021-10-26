@@ -24,3 +24,15 @@ Use following command in order to create required symbolic links.
 ```shell
 make create-symbolic-links
 ```
+
+## Create Cluster
+Use following command in order to create cluster.
+```shell
+create-cluster
+```
+
+## Destroy Cluster
+Use following command in order to destroy cluster.
+```shell
+destroy-cluster
+```
