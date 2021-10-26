@@ -36,3 +36,23 @@ Use following command in order to destroy cluster.
 ```shell
 destroy-cluster
 ```
+
+## Prepare your App 
+
+### Create env file
+Use following command in order to create your App env's file.
+```shell
+cat << EOF > app1.env
+APP=app1
+EOF
+```
+
+### Import as submodules content-app & platform-configuration-helm
+
+```shell
+git submodule add --branch master git@gitlab.com:${GROUP}/${PATH}/${TEAM}/content-app-${APP}.git modules/content-app-${APP}
+```
+
+```shell
+git submodule add --branch unrestricted git@gitlab.com:${GROUP}/${PATH}/${TEAM}/platform-configuration-helm-${APP}.git modules/platform-configuration-helm-${APP}
+```
