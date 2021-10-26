@@ -22,8 +22,8 @@ submodule-update:
 	source modules/doe-tool-bash-k8s-lab/tools
 	submodule_update
 
-make-symbolic-links: ## make-symbolic-links
-make-symbolic-links:
+create-symbolic-links: ## create-symbolic-links
+create-symbolic-links:
 	rm -Rf modules/doe-tool-bash-k8s-lab/.env
 	ln -s ../../.env modules/doe-tool-bash-k8s-lab/
 	rm -Rf modules/doe-tool-bash-k8s-lab/kind-config.yaml
