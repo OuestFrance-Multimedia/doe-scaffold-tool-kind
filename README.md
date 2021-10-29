@@ -41,12 +41,26 @@ make destroy-cluster
 
 ### Import as submodules content-app & platform-configuration-helm
 
+#### content-app
+Syntax:
 ```shell
 git submodule add --branch master git@${HOST}:${GROUP}/${PATH}/${TEAM}/content-app-${APP}.git modules/content-app-${APP}
 ```
 
+Example:
+```shell
+git submodule add --branch demo https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git modules/content-app-demo
+```
+
+#### platform-configuration-helm
+Syntax:
 ```shell
 git submodule add --branch unrestricted git@${HOST}:${GROUP}/${PATH}/${TEAM}/platform-configuration-helm-${APP}.git modules/platform-configuration-helm-${APP}
+```
+
+Example:
+```shell
+git submodule add --branch demo https://github.com/OuestFrance-Multimedia/doe-scaffold-platform-configuration-helm.git modules/platform-configuration-helm-demo
 ```
 
 ### Create env file
