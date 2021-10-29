@@ -19,16 +19,53 @@ make -f modules/doe-tool-bash-k8s-lab/Makefile install
 ### Prepare configuration
 Generate .env and kind-config.yaml files just as explain here: https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#prerequisite
 
+Example:
+```bash
+KIND_CLUSTER_NAME=demo
+cat << EOF > .env
+KIND_CLUSTER_NAME=$KIND_CLUSTER_NAME
+KIND_CLUSTER_IMAGE=kindest/node:v1.19.7
+KUBE_CONTEXT=kind-${KIND_CLUSTER_NAME}
+NETWORK_PREFIX=143.25
+METALLB_SPEAKER_SECRET_VALUE=$(openssl rand -base64 256|tr -d '\n')
+EOF
+```
+
 ### Create Symbolic Links
+.env and kind-config.yaml are used by `modules/doe-tool-bash-k8s-lab`, so we need symbolic links.
+
 Use following command in order to create required symbolic links.
 ```shell
 make create-symbolic-links
 ```
 
 ## Create Cluster
-Use following command in order to create cluster.
+In order to create a kubernetes cluster thanks kind, we need :
+- create a docker network with: subnet, gateway etc
+- create a kubernetes cluster
+- deploy a container resource metrics - [Metrics Server](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metrics-server)
+- deploy a Load Balancer implementation - [MetalLB](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metallb)
+- deploy a Ingress controller - [Nginx Ingress Controller](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#nginx-ingress-controller)
+
+### Create a docker network
 ```shell
-make create-cluster
+make create-docker-network
+```
+### Create a kubernetes cluster
+```shell
+make create-kind
+```
+### Deploy a container resource metrics
+```shell
+make deploy-metrics-server
+```
+### Deploy a Load Balancer implementation
+```shell
+make deploy-metallb
+```
+### Deploy a Ingress controller
+```shell
+make deploy-nginx-ingress-controller
 ```
 
 ## Destroy Cluster
