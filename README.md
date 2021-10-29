@@ -60,12 +60,16 @@ EOF
 ```
 
 ### Create Symbolic Links
-.env and kind-config.yaml are used by `modules/doe-tool-bash-k8s-lab`, so we need symbolic links.
+**.env** and **kind-config.yaml** are used by submodule: **doe-tool-bash-k8s-lab**, so we need symbolic links.
 
-Use following command in order to create required symbolic links.
+Use following command in order to create required symbolic links:
 ```shell
 make create-symbolic-links
 ```
+
+---
+We can check symbolic links and contents
+<p align="center"><img alt="kind" src=".github/kind-config.png" width="800px" /></p>
 
 ## Create Cluster
 In order to create a kubernetes cluster thanks kind, we need :
@@ -79,25 +83,30 @@ In order to create a kubernetes cluster thanks kind, we need :
 ```shell
 make create-docker-network
 ```
-
-You can inspect what's append ...
+---
+We can inspect our network ...
 <p align="center"><img alt="kind" src=".github/docker_network_inspect_demo.png" width="700px" /></p>
 
 ### Create a kubernetes cluster
 ```shell
 make create-kind
 ```
-
-You will show  the following output
+---
+We will show  the following output
 <p align="center"><img alt="kind" src=".github/kind.png" width="800px" /></p>
 
+---
+We can list running containers
 
-You can show 2 containers :
-- demo-control-plane
+<p align="center"><img alt="docker_ps" src=".github/docker_ps.png" width="900px" /></p>
 
 
-<p align="center"><img alt="kind" src=".github/docker_ps.png" width="800px" /></p>
+We can show 2 containers :
+- demo-control-plane: which represents a master node and deliver API server used by [kubectl](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#kubectl) or [lens](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#lens).
 
+- demo-worker: which represents a worker node in a kubernetes cluster. Worker node will host our apps.
+
+<p align="center"><img alt="k8s_control-plane_workers" src=".github/k8s_control-plane_workers.png" width="600px" /></p>
 
 ### Deploy a container resource metrics - [Metrics Server](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metrics-server)
 ```shell
