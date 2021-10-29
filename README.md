@@ -1,6 +1,17 @@
 # doe-scaffold-tool-kind
 
-## Initialize submodules 
+## Initialize git submodules
+
+This repo use git submodules, so you need know how manipulate them.
+
+### git submodules ? what's that ?
+Submodules allow you to keep a Git repository as a subdirectory of another Git repository. This lets you clone another repository into your project and keep your commits separate.
+
+<p align="center"><img alt="kind" src=".github/submodule-example-1024x689-1.jpg" width="500px" /></p>
+
+[https://git-scm.com/book/en/v2/Git-Tools-Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+
+### Initialize submodules
 Use following command in order to initialize submodules.
 ```shell
 git submodule update --init --recursive
@@ -16,10 +27,12 @@ Use following command in order to install k8s lab's tools.
 ```shell
 make -f modules/doe-tool-bash-k8s-lab/Makefile install
 ```
-### Prepare configuration
-Generate .env and kind-config.yaml files just as explain here: https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#prerequisite
+### Prepare configuration files
 
-Example:
+#### .env file
+Generate .env file just as explain here: https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#prerequisite
+
+Example for .env file:
 ```bash
 KIND_CLUSTER_NAME=demo
 cat << EOF > .env
@@ -28,6 +41,21 @@ KIND_CLUSTER_IMAGE=kindest/node:v1.19.7
 KUBE_CONTEXT=kind-${KIND_CLUSTER_NAME}
 NETWORK_PREFIX=143.25
 METALLB_SPEAKER_SECRET_VALUE=$(openssl rand -base64 256|tr -d '\n')
+EOF
+```
+
+#### kind-config.yaml
+Generate kind-config.yaml file just as explain here: https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#configuration
+
+Example for kind-config.yaml file:
+```bash
+cat << EOF > kind-config.yaml
+---
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+- role: worker
 EOF
 ```
 
@@ -51,19 +79,35 @@ In order to create a kubernetes cluster thanks kind, we need :
 ```shell
 make create-docker-network
 ```
+
+You can inspect what's append ...
+<p align="center"><img alt="kind" src=".github/docker_network_inspect_demo.png" width="700px" /></p>
+
 ### Create a kubernetes cluster
 ```shell
 make create-kind
 ```
-### Deploy a container resource metrics
+
+You will show  the following output
+<p align="center"><img alt="kind" src=".github/kind.png" width="800px" /></p>
+
+
+You can show 2 containers :
+- demo-control-plane
+
+
+<p align="center"><img alt="kind" src=".github/docker_ps.png" width="800px" /></p>
+
+
+### Deploy a container resource metrics - [Metrics Server](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metrics-server)
 ```shell
 make deploy-metrics-server
 ```
-### Deploy a Load Balancer implementation
+### Deploy a Load Balancer implementation - [MetalLB](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metallb)
 ```shell
 make deploy-metallb
 ```
-### Deploy a Ingress controller
+### Deploy a Ingress controller - [Nginx Ingress Controller](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#nginx-ingress-controller)
 ```shell
 make deploy-nginx-ingress-controller
 ```
