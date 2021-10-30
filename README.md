@@ -13,15 +13,13 @@ Submodules allow you to keep a Git repository as a subdirectory of another Git r
 
 ### Define a submodule
 
-Submodules properties are declared at repo's root dir into a file named: **.gitmodules** 
+Submodule(s) used in this repository have been added just likes the following example:
+<p align="center"><img alt="git submodule add" src=".github/git_submodule_add.png" width="900px" /></p>
+
+Submodules properties are stored at repo's root dir into a file named: **.gitmodules** 
 
 Example:
 <p align="center"><img alt=".gitmodules" src=".github/.gitmodules.png" width="900px" /></p>
-
-This submodule have been added thanks the following command:
-
-<p align="center"><img alt="git submodule add" src=".github/git_submodule_add.png" width="900px" /></p>
-
 
 ### Initialize submodules
 Submodules need to be initialized when you clone a repo.
@@ -31,7 +29,7 @@ git submodule update \
   --init \
   --recursive
 ```
-
+Output:
 <p align="center"><img alt="git submodule update --init --recursive" src=".github/git_submodule_update_init_recursive.png" width="900px" /></p>
 
 ## Prerequisite
@@ -164,7 +162,7 @@ make destroy-cluster
 ```
 
 Output ...
-<p align="center"><img alt="destroy-cluster" src=".github/destroy-cluster.png" width="500px" /></p>
+<p align="left"><img alt="destroy-cluster" src=".github/destroy-cluster.png" width="300px" /></p>
 
 ## Create Cluster
 You can create: docker network, KIND and deploy Metrics Server, MetalLB and Nginx Ingress Controller in one step:
@@ -176,7 +174,7 @@ make create-cluster
 
 ### Import as submodules content-app & platform-configuration-helm
 
-#### content-app
+#### <u>content-app</u>
 Syntax:
 ```shell
 git submodule add --branch master git@${HOST}:${GROUP}/${PATH}/${TEAM}/content-app-${APP}.git modules/content-app-${APP}
@@ -187,15 +185,21 @@ Example:
 git submodule add --branch demo https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git modules/content-app-demo
 ```
 
-#### platform-configuration-helm
+#### <u>platform-configuration-helm</u>
 Syntax:
 ```shell
-git submodule add --branch unrestricted git@${HOST}:${GROUP}/${PATH}/${TEAM}/platform-configuration-helm-${APP}.git modules/platform-configuration-helm-${APP}
+git submodule add \
+  --branch unrestricted \
+  git@${HOST}:${GROUP}/${PATH}/${TEAM}/platform-configuration-helm-${APP}.git \
+  modules/platform-configuration-helm-${APP}
 ```
 
 Example:
 ```shell
-git submodule add --branch demo https://github.com/OuestFrance-Multimedia/doe-scaffold-platform-configuration-helm.git modules/platform-configuration-helm-demo
+git submodule add \
+  --branch demo \
+  https://github.com/OuestFrance-Multimedia/doe-scaffold-platform-configuration-helm.git \
+  modules/platform-configuration-helm-demo
 ```
 
 ### Create env file
