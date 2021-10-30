@@ -103,28 +103,53 @@ We can list running containers
 
 We can show 2 containers :
 - demo-control-plane: which represents a master node and deliver API server used by [kubectl](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#kubectl) or [lens](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#lens).
-
-- demo-worker: which represents a worker node in a kubernetes cluster. Worker node will host our apps.
+In this example, we can see than API server is exposed locally *(127.0.0.1)* on port 38841.
+- demo-worker: which represents a worker node in a kubernetes cluster. Worker node(s) will host our apps.
 
 <p align="center"><img alt="k8s_control-plane_workers" src=".github/k8s_control-plane_workers.png" width="600px" /></p>
+
+---
+Now we can consume API Server of kubernetes with [kubectl](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#kubectl) or [lens](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#lens).
+
+<p align="center"><img alt="kubectl_cluster-info" src=".github/kubectl_cluster-info.png" width="900px" /></p>
 
 ### Deploy a container resource metrics - [Metrics Server](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metrics-server)
 ```shell
 make deploy-metrics-server
 ```
+
+Following output can be viewed when finished.
+<p align="center"><img alt="deploy-metrics-server" src=".github/deploy-metrics-server.png" width="900px" /></p>
+
 ### Deploy a Load Balancer implementation - [MetalLB](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metallb)
 ```shell
 make deploy-metallb
 ```
+
+Following output can be viewed when finished.
+<p align="center"><img alt="deploy-metallb" src=".github/deploy-metallb.png" width="900px" /></p>
+
 ### Deploy a Ingress controller - [Nginx Ingress Controller](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#nginx-ingress-controller)
 ```shell
 make deploy-nginx-ingress-controller
 ```
 
+Output ...
+<p align="center"><img alt="deploy-nginx-ingress-controller" src=".github/deploy-nginx-ingress-controller.png" width="900px" /></p>
+
 ## Destroy Cluster
 Use following command in order to destroy cluster.
 ```shell
 make destroy-cluster
+```
+
+Output ...
+<p align="center"><img alt="destroy-cluster" src=".github/destroy-cluster.png" width="500px" /></p>
+
+## Create Cluster
+You can create: docker network, KIND and deploy Metrics Server, MetalLB and Nginx Ingress Controller in one step:
+```shell
+make create-cluster
 ```
 
 ## Prepare your App 

@@ -14,12 +14,7 @@ create-symbolic-links:
 	ln -s ../../kind-config.yaml modules/doe-tool-bash-k8s-lab/
 
 create-cluster: ## create-cluster
-create-cluster:
-	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile create-docker-network
-	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile create-kind
-# $(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-metrics-server
-# $(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-metallb
-# $(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-nginx-ingress-controller
+create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller
 
 create-docker-network: ## create-docker-network
 create-docker-network:
