@@ -46,3 +46,11 @@ docker-build-demo: ## docker-build-demo
 docker-build-demo:
 	source modules/doe-tool-bash-k8s-lab/tools
 	docker_build --env-file=.env --env-file=demo.env --env-file=common.env
+push-images-demo: ## push-images-demo
+push-images-demo:
+	source modules/doe-tool-bash-k8s-lab/tools
+	push_images --env-file=.env --env-file=demo.env --env-file=common.env
+helm-template-demo: ## helm-template-demo
+helm-template-demo:
+	source modules/doe-tool-bash-k8s-lab/tools
+	helm_template --env-file=.env --env-file=demo.env --env-file=common.env
