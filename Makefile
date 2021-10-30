@@ -40,3 +40,9 @@ deploy-nginx-ingress-controller:
 destroy-cluster: ## destroy
 destroy-cluster:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile destroy
+
+############################################################# NO DEV ########################################################################################
+docker-build-demo: ## docker-build-demo
+docker-build-demo:
+	source modules/doe-tool-bash-k8s-lab/tools
+	docker_build --env-file=.env --env-file=demo.env --env-file=common.env
