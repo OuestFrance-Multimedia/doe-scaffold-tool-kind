@@ -177,12 +177,18 @@ make create-cluster
 #### <u>content-app</u>
 Syntax:
 ```shell
-git submodule add --branch master git@${HOST}:${GROUP}/${PATH}/${TEAM}/content-app-${APP}.git modules/content-app-${APP}
+git submodule add \
+  --branch master \
+  git@${HOST}:${GROUP}/${PATH}/${TEAM}/content-app-${APP}.git \
+  modules/content-app-${APP}
 ```
 
 Example:
 ```shell
-git submodule add --branch demo https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git modules/content-app-demo
+git submodule add \
+  --branch demo \
+  https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git \
+  modules/content-app-demo
 ```
 
 #### <u>platform-configuration-helm</u>
@@ -207,8 +213,8 @@ Use following command in order to create your App env's file.
 
 Example:
 ```shell
-cat << EOF > app1.env
-APP=app1
+cat << EOF > demo.env
+APP=demo
 EOF
 ```
 
