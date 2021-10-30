@@ -7,15 +7,32 @@ This repo use git submodules, so you need know how manipulate them.
 ### git submodules ? what's that ?
 Submodules allow you to keep a Git repository as a subdirectory of another Git repository. This lets you clone another repository into your project and keep your commits separate.
 
-<p align="center"><img alt="kind" src=".github/submodule-example-1024x689-1.jpg" width="500px" /></p>
+<p align="center"><img alt="git submodules" src=".github/submodule-example-1024x689-1.jpg" width="500px" /></p>
 
 [https://git-scm.com/book/en/v2/Git-Tools-Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 
+### Define a submodule
+
+Submodules properties are declared at repo's root dir into a file named: **.gitmodules** 
+
+Example:
+<p align="center"><img alt=".gitmodules" src=".github/.gitmodules.png" width="900px" /></p>
+
+This submodule have been added thanks the following command:
+
+<p align="center"><img alt="git submodule add" src=".github/git_submodule_add.png" width="900px" /></p>
+
+
 ### Initialize submodules
-Use following command in order to initialize submodules.
+Submodules need to be initialized when you clone a repo.
+Use following command in order to initialize submodules of this repository.
 ```shell
-git submodule update --init --recursive
+git submodule update \
+  --init \
+  --recursive
 ```
+
+<p align="center"><img alt="git submodule update --init --recursive" src=".github/git_submodule_update_init_recursive.png" width="900px" /></p>
 
 ## Prerequisite
 
