@@ -113,6 +113,8 @@ Now we can consume API Server of kubernetes with [kubectl](https://github.com/Ou
 
 <p align="center"><img alt="kubectl_cluster-info" src=".github/kubectl_cluster-info.png" width="900px" /></p>
 
+<p align="center"><img alt="docker_exec_worker_crictl_ps" src=".github/docker_exec_worker_crictl_ps.png" width="900px" /></p>
+
 ### Deploy a container resource metrics - [Metrics Server](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#metrics-server)
 ```shell
 make deploy-metrics-server
