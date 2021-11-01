@@ -60,6 +60,14 @@ helm-upgrade-demo:
 	helm_upgrade --env-file=.env --env-file=demo.env --env-file=common.env
 deploy-demo: ## deploy-demo
 deploy-demo: docker-build-demo push-images-demo helm-template-demo helm-upgrade-demo
+helm-uninstall-demo: ## helm-uninstall-demo
+helm-uninstall-demo:
+	for i in .env demo.env common.env; do eval $$(cat $$i); done
+	helm uninstall \
+		--kube-context $$KUBE_CONTEXT \
+		--namespace $$HELM_NAMESPACE \
+		$$HELM_RELEASE
+	kubectl delete namespace $$HELM_NAMESPACE --context $$KUBE_CONTEXT
 #####################################################################################################################################################
 docker-build-demo-dev: ## docker-build-demo-dev
 docker-build-demo-dev:
@@ -79,3 +87,11 @@ helm-upgrade-demo-dev:
 	helm_upgrade --env-file=.env --env-file=demo-dev.env --env-file=common.env
 deploy-demo-dev: ## deploy-demo-dev
 deploy-demo-dev: docker-build-demo-dev push-images-demo-dev helm-template-demo-dev helm-upgrade-demo-dev
+helm-uninstall-demo-dev: ## helm-uninstall-demo-dev
+helm-uninstall-demo-dev:
+	for i in .env demo-dev.env common.env; do eval $$(cat $$i); done
+	helm uninstall \
+		--kube-context $$KUBE_CONTEXT \
+		--namespace $$HELM_NAMESPACE \
+		$$HELM_RELEASE
+	kubectl delete namespace $$HELM_NAMESPACE --context $$KUBE_CONTEXT
