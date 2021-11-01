@@ -41,7 +41,7 @@ destroy-cluster: ## destroy
 destroy-cluster:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile destroy
 
-############################################################# NO DEV ########################################################################################
+#####################################################################################################################################################
 docker-build-demo: ## docker-build-demo
 docker-build-demo:
 	source modules/doe-tool-bash-k8s-lab/tools
@@ -60,3 +60,22 @@ helm-upgrade-demo:
 	helm_upgrade --env-file=.env --env-file=demo.env --env-file=common.env
 deploy-demo: ## deploy-demo
 deploy-demo: docker-build-demo push-images-demo helm-template-demo helm-upgrade-demo
+#####################################################################################################################################################
+docker-build-demo-dev: ## docker-build-demo-dev
+docker-build-demo-dev:
+	source modules/doe-tool-bash-k8s-lab/tools
+	docker_build --env-file=.env --env-file=demo-dev.env --env-file=common.env
+push-images-demo-dev: ## push-images-demo-dev
+push-images-demo-dev:
+	source modules/doe-tool-bash-k8s-lab/tools
+	push_images --env-file=.env --env-file=demo-dev.env --env-file=common.env
+helm-template-demo-dev: ## helm-template-demo-dev
+helm-template-demo-dev:
+	source modules/doe-tool-bash-k8s-lab/tools
+	helm_template --env-file=.env --env-file=demo-dev.env --env-file=common.env
+helm-upgrade-demo-dev: ## helm-upgrade-demo-dev
+helm-upgrade-demo-dev:
+	source modules/doe-tool-bash-k8s-lab/tools
+	helm_upgrade --env-file=.env --env-file=demo-dev.env --env-file=common.env
+deploy-demo-dev: ## deploy-demo-dev
+deploy-demo-dev: docker-build-demo-dev push-images-demo-dev helm-template-demo-dev helm-upgrade-demo-dev
