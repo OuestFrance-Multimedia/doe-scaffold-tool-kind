@@ -58,3 +58,5 @@ helm-upgrade-demo: ## helm-upgrade-demo
 helm-upgrade-demo:
 	source modules/doe-tool-bash-k8s-lab/tools
 	helm_upgrade --env-file=.env --env-file=demo.env --env-file=common.env
+deploy-demo: ## deploy-demo
+deploy-demo: docker-build-demo push-images-demo helm-template-demo helm-upgrade-demo
