@@ -2,3 +2,11 @@
 	path = modules/doe-tool-bash-k8s-lab
 	url = https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab.git
 	branch = 0.0.2
+[submodule "modules/content-app-app1"]
+	path = modules/content-app-app1
+	url = https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git
+	branch = demo
+[submodule "modules/platform-configuration-helm-app1"]
+	path = modules/platform-configuration-helm-app1
+	url = https://github.com/OuestFrance-Multimedia/doe-scaffold-platform-configuration-helm.git
+	branch = demo

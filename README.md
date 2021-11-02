@@ -188,7 +188,7 @@ Example:
 git submodule add \
   --branch demo \
   https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git \
-  modules/content-app-demo
+  modules/content-app-app1
 ```
 
 #### <u>platform-configuration-helm</u>
@@ -205,7 +205,7 @@ Example:
 git submodule add \
   --branch demo \
   https://github.com/OuestFrance-Multimedia/doe-scaffold-platform-configuration-helm.git \
-  modules/platform-configuration-helm-demo
+  modules/platform-configuration-helm-app1
 ```
 
 ### Create env file
