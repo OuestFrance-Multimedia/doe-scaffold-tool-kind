@@ -48,54 +48,54 @@ destroy-cluster:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile destroy
 
 #####################################################################################################################################################
-docker-build-demo: ## docker-build-demo
-docker-build-demo:
+docker-build-app1: ## docker-build-app1
+docker-build-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	docker_build --env-file=.env --env-file=demo.env --env-file=common.env
-push-images-demo: ## push-images-demo
-push-images-demo:
+	docker_build --env-file=.env --env-file=app1.env --env-file=common.env
+push-images-app1: ## push-images-app1
+push-images-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	push_images --env-file=.env --env-file=demo.env --env-file=common.env
-helm-template-demo: ## helm-template-demo
-helm-template-demo:
+	push_images --env-file=.env --env-file=app1.env --env-file=common.env
+helm-template-app1: ## helm-template-app1
+helm-template-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_template --env-file=.env --env-file=demo.env --env-file=common.env
-helm-upgrade-demo: ## helm-upgrade-demo
-helm-upgrade-demo:
+	helm_template --env-file=.env --env-file=app1.env --env-file=common.env
+helm-upgrade-app1: ## helm-upgrade-app1
+helm-upgrade-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_upgrade --env-file=.env --env-file=demo.env --env-file=common.env
-deploy-demo: ## deploy-demo
-deploy-demo: docker-build-demo push-images-demo helm-template-demo helm-upgrade-demo
-helm-uninstall-demo: ## helm-uninstall-demo
-helm-uninstall-demo:
-	for i in .env demo.env common.env; do eval $$(cat $$i); done
+	helm_upgrade --env-file=.env --env-file=app1.env --env-file=common.env
+deploy-app1: ## deploy-app1
+deploy-app1: docker-build-app1 push-images-app1 helm-template-app1 helm-upgrade-app1
+helm-uninstall-app1: ## helm-uninstall-app1
+helm-uninstall-app1:
+	for i in .env app1.env common.env; do eval $$(cat $$i); done
 	helm uninstall \
 		--kube-context $$KUBE_CONTEXT \
 		--namespace $$HELM_NAMESPACE \
 		$$HELM_RELEASE
 	kubectl delete namespace $$HELM_NAMESPACE --context $$KUBE_CONTEXT
 #####################################################################################################################################################
-docker-build-demo-dev: ## docker-build-demo-dev
-docker-build-demo-dev:
+docker-build-app1-dev: ## docker-build-app1-dev
+docker-build-app1-dev:
 	source modules/doe-tool-bash-k8s-lab/tools
-	docker_build --env-file=.env --env-file=demo-dev.env --env-file=common.env
-push-images-demo-dev: ## push-images-demo-dev
-push-images-demo-dev:
+	docker_build --env-file=.env --env-file=app1-dev.env --env-file=common.env
+push-images-app1-dev: ## push-images-app1-dev
+push-images-app1-dev:
 	source modules/doe-tool-bash-k8s-lab/tools
-	push_images --env-file=.env --env-file=demo-dev.env --env-file=common.env
-helm-template-demo-dev: ## helm-template-demo-dev
-helm-template-demo-dev:
+	push_images --env-file=.env --env-file=app1-dev.env --env-file=common.env
+helm-template-app1-dev: ## helm-template-app1-dev
+helm-template-app1-dev:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_template --env-file=.env --env-file=demo-dev.env --env-file=common.env
-helm-upgrade-demo-dev: ## helm-upgrade-demo-dev
-helm-upgrade-demo-dev:
+	helm_template --env-file=.env --env-file=app1-dev.env --env-file=common.env
+helm-upgrade-app1-dev: ## helm-upgrade-app1-dev
+helm-upgrade-app1-dev:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_upgrade --env-file=.env --env-file=demo-dev.env --env-file=common.env
-deploy-demo-dev: ## deploy-demo-dev
-deploy-demo-dev: docker-build-demo-dev push-images-demo-dev helm-template-demo-dev helm-upgrade-demo-dev
-helm-uninstall-demo-dev: ## helm-uninstall-demo-dev
-helm-uninstall-demo-dev:
-	for i in .env demo-dev.env common.env; do eval $$(cat $$i); done
+	helm_upgrade --env-file=.env --env-file=app1-dev.env --env-file=common.env
+deploy-app1-dev: ## deploy-app1-dev
+deploy-app1-dev: docker-build-app1-dev push-images-app1-dev helm-template-app1-dev helm-upgrade-app1-dev
+helm-uninstall-app1-dev: ## helm-uninstall-app1-dev
+helm-uninstall-app1-dev:
+	for i in .env app1-dev.env common.env; do eval $$(cat $$i); done
 	helm uninstall \
 		--kube-context $$KUBE_CONTEXT \
 		--namespace $$HELM_NAMESPACE \
