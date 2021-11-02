@@ -5,5 +5,5 @@ nodes:
 - role: control-plane
 - role: worker
   extraMounts:
-  - hostPath: ../content-app-demo/sources
-    containerPath: /workspace/content-app-demo/sources
+  - hostPath: ../content-app-app1/sources
+    containerPath: /workspace/content-app-app1/sources
