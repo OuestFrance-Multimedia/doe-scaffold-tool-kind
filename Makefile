@@ -20,7 +20,7 @@ config-etc-hosts:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile config-etc-hosts
 
 create-cluster: ## create-cluster
-create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller
+create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller deploy-cert-manager
 
 create-docker-network: ## create-docker-network
 create-docker-network:
@@ -42,6 +42,9 @@ deploy-nginx-ingress-controller: ## deploy-nginx-ingress-controller
 deploy-nginx-ingress-controller:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-nginx-ingress-controller
 
+deploy-cert-manager: ## deploy-cert-manager
+deploy-cert-manager:
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-cert-manager
 
 destroy-cluster: ## destroy
 destroy-cluster:

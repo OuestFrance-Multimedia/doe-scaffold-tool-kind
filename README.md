@@ -155,6 +155,14 @@ make deploy-nginx-ingress-controller
 Output ...
 <p align="center"><img alt="deploy-nginx-ingress-controller" src=".github/deploy-nginx-ingress-controller.png" width="900px" /></p>
 
+### Deploy a Cert Manager - [Cert Manager](https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab#cert-manager)
+```shell
+make deploy-cert-manager
+```
+
+Output ...
+<p align="center"><img alt="deploy-cert-manager" src=".github/deploy-cert-manager.png" width="900px" /></p>
+
 ## Destroy Cluster
 Use following command in order to destroy cluster.
 ```shell
