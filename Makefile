@@ -12,6 +12,12 @@ create-symbolic-links:
 	ln -s ../../.env modules/doe-tool-bash-k8s-lab/
 	rm -Rf modules/doe-tool-bash-k8s-lab/kind-config.yaml
 	ln -s ../../kind-config.yaml modules/doe-tool-bash-k8s-lab/
+	rm -Rf modules/doe-tool-bash-k8s-lab/hosts-demo.conf
+	ln -s ../../hosts-demo.conf modules/doe-tool-bash-k8s-lab/
+
+config-etc-hosts: ## config-etc-hosts
+config-etc-hosts:
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile config-etc-hosts
 
 create-cluster: ## create-cluster
 create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller
