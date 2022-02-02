@@ -24,6 +24,11 @@ config-etc-hosts: ## config-etc-hosts
 config-etc-hosts:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile config-etc-hosts
 
+import-certificates: ## import-certificates
+import-certificates:
+	source modules/doe-tool-bash-k8s-lab/tools
+	import_certificates
+
 create-cluster: ## create-cluster
 create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller deploy-cert-manager
 
@@ -70,8 +75,22 @@ helm-template-app1:
 	helm_template --env-file=.env --env-file=app1.env --env-file=common.env
 helm-upgrade-app1: ## helm-upgrade-app1
 helm-upgrade-app1:
+# update /etc/hosts
+	make config-etc-hosts
+# deploy app1
 	source modules/doe-tool-bash-k8s-lab/tools
 	helm_upgrade --env-file=.env --env-file=app1.env --env-file=common.env
+# eval env files
+	for i in .env app1.env common.env; do eval $$(cat $$i); done
+# export KUBE_CONTEXT and import-certificates locally
+	export KUBE_CONTEXT
+	make import-certificates
+# switch context
+	kubectx $$KUBE_CONTEXT
+# switch namespace
+	kubens $$HELM_NAMESPACE
+# list ingresses
+	kubectl get ingress --context $$KUBE_CONTEXT --namespace $$HELM_NAMESPACE
 deploy-app1: ## deploy-app1
 deploy-app1: docker-build-app1 push-images-app1 helm-template-app1 helm-upgrade-app1
 helm-uninstall-app1: ## helm-uninstall-app1
@@ -97,8 +116,22 @@ helm-template-app1-dev:
 	helm_template --env-file=.env --env-file=app1-dev.env --env-file=common.env
 helm-upgrade-app1-dev: ## helm-upgrade-app1-dev
 helm-upgrade-app1-dev:
+# update /etc/hosts
+	make config-etc-hosts
+# deploy app1
 	source modules/doe-tool-bash-k8s-lab/tools
 	helm_upgrade --env-file=.env --env-file=app1-dev.env --env-file=common.env
+# eval env files
+	for i in .env app1-dev.env common.env; do eval $$(cat $$i); done
+# export KUBE_CONTEXT and import-certificates locally
+	export KUBE_CONTEXT
+	make import-certificates
+# switch context
+	kubectx $$KUBE_CONTEXT
+# switch namespace
+	kubens $$HELM_NAMESPACE
+# list ingresses
+	kubectl get ingress --context $$KUBE_CONTEXT --namespace $$HELM_NAMESPACE
 deploy-app1-dev: ## deploy-app1-dev
 deploy-app1-dev: docker-build-app1-dev push-images-app1-dev helm-template-app1-dev helm-upgrade-app1-dev
 helm-uninstall-app1-dev: ## helm-uninstall-app1-dev
