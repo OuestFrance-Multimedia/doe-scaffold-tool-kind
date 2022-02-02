@@ -6,6 +6,11 @@ help:
 	@grep -E '(^(\w+-?)+:.*?##.*$$)' Makefile | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}'
 ###########################################################################################################################################################
 
+submodule-init: ## submodule-init
+submodule-init:
+	git submodule update --init --recursive
+	git submodule update --remote --recursive
+
 create-symbolic-links: ## create-symbolic-links
 create-symbolic-links:
 	rm -Rf modules/doe-tool-bash-k8s-lab/.env
