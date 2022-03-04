@@ -68,15 +68,15 @@ docker-build-app1:
 push-images-app1: ## push-images-app1
 push-images-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	push_images --env-file=.env --env-file=app1.env --env-file=common.env
+	push_images --env-file=.env --env-file=app1.env --env-file=common.env --debug
 helm-template-app1: ## helm-template-app1
 helm-template-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_template --env-file=.env --env-file=app1.env --env-file=common.env
+	helm_template --env-file=.env --env-file=app1.env --env-file=common.env --debug
 helm-upgrade-app1: ## helm-upgrade-app1
 helm-upgrade-app1:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_upgrade --env-file=.env --env-file=app1.env --env-file=common.env
+	helm_upgrade --env-file=.env --env-file=app1.env --env-file=common.env --debug
 post-deploy-app1: ## post-deploy-app1
 post-deploy-app1:
 # eval env files
@@ -118,7 +118,7 @@ helm-template-app1-dev:
 helm-upgrade-app1-dev: ## helm-upgrade-app1-dev
 helm-upgrade-app1-dev:
 	source modules/doe-tool-bash-k8s-lab/tools
-	helm_upgrade --env-file=.env --env-file=app1-dev.env --env-file=common.env
+	helm_upgrade --env-file=.env --env-file=app1-dev.env --env-file=common.env --debug
 post-deploy-app1-dev: ## post-deploy-app1-dev
 post-deploy-app1-dev:
 # eval env files
