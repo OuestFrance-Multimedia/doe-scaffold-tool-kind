@@ -30,7 +30,7 @@ import-certificates:
 	import_certificates
 
 create-cluster: ## create-cluster
-create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller deploy-cert-manager
+create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-monitoring-logging-stack deploy-nginx-ingress-controller deploy-cert-manager deploy-kube-prometheus-stack-certificate
 
 create-docker-network: ## create-docker-network
 create-docker-network:
@@ -47,6 +47,14 @@ deploy-metrics-server:
 deploy-metallb: ## deploy-metallb
 deploy-metallb:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-metallb
+
+deploy-monitoring-logging-stack: ## deploy-monitoring-logging-stack
+deploy-monitoring-logging-stack:
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-monitoring-logging-stack
+
+deploy-kube-prometheus-stack-certificate: ## deploy-kube-prometheus-stack-certificate
+deploy-kube-prometheus-stack-certificate:
+	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile deploy-kube-prometheus-stack-certificate
 
 deploy-nginx-ingress-controller: ## deploy-nginx-ingress-controller
 deploy-nginx-ingress-controller:
