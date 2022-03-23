@@ -26,11 +26,14 @@ config-etc-hosts:
 
 import-certificates: ## import-certificates
 import-certificates:
+	eval $$(cat .env)
 	source modules/doe-tool-bash-k8s-lab/tools
+# export KUBE_CONTEXT and import-certificates locally
+	export KUBE_CONTEXT
 	import_certificates
 
 create-cluster: ## create-cluster
-create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-monitoring-logging-stack deploy-nginx-ingress-controller deploy-cert-manager deploy-kube-prometheus-stack-certificate
+create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-monitoring-logging-stack deploy-nginx-ingress-controller deploy-cert-manager deploy-kube-prometheus-stack-certificate import-certificates
 
 create-docker-network: ## create-docker-network
 create-docker-network:
