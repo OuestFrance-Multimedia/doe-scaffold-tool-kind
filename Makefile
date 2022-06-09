@@ -33,7 +33,8 @@ prune-certificates:
 	$(MAKE) -f modules/doe-tool-bash-k8s-lab/Makefile import-certificates
 
 create-cluster: ## create-cluster
-create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-monitoring-logging-stack deploy-nginx-ingress-controller deploy-cert-manager deploy-kube-prometheus-stack-certificate import-certificates
+create-cluster: create-docker-network create-kind deploy-metrics-server deploy-metallb deploy-nginx-ingress-controller deploy-cert-manager  import-certificates
+#deploy-monitoring-logging-stack deploy-kube-prometheus-stack-certificate
 
 create-docker-network: ## create-docker-network
 create-docker-network:
