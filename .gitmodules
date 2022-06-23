@@ -1,7 +1,7 @@
 [submodule "modules/doe-tool-bash-k8s-lab"]
 	path = modules/doe-tool-bash-k8s-lab
 	url = https://github.com/OuestFrance-Multimedia/doe-tool-bash-k8s-lab.git
-	branch = 0.0.3
+	branch = 0.0.5
 [submodule "modules/content-app-app1"]
 	path = modules/content-app-app1
 	url = https://github.com/OuestFrance-Multimedia/doe-scaffold-content-app.git
